@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Paladar a las Estrellas</title>
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+            Estilos CSS para la página web "Del Paladar a las Estrellas"
+            Diseño adaptativo, elegante y con un tema de color azul cohesivo.
+        */
+
+        /* --- VARIABLES Y ESTILOS GENERALES --- */
+        :root {
+            --primary-blue: #0077c9; /* Azul de acento, el más brillante */
+            --main-bg-color: #1a2b40; /* El color de fondo principal, azul oscuro */
+            --secondary-bg-color: #253b54; /* Un azul un poco más claro para los elementos */
+            --text-color-light: #f0f8ff; /* Color de texto muy claro (blanco azulado) */
+            --secondary-text-color: #aebfd4; /* Color de texto secundario */
+            --border-color: #334d66; /* Un color de borde sutil */
+            --font-heading: 'Alegreya', serif; /* Nueva fuente para los títulos */
+            --font-body: 'Lato', sans-serif; /* Nueva fuente para el cuerpo del texto */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color-light);
+            line-height: 1.6;
+            background-color: var(--main-bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* --- ESTILOS DEL ENCABEZADO --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--secondary-bg-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        header .logo-container:hover {
+            opacity: 0.8;
+        }
+
+        header .logo {
+            height: 40px; /* Ajusta el tamaño del logo */
+            width: auto;
+        }
+        
+        header .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color-light);
+            white-space: nowrap;
+        }
+
+        header nav a {
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--text-color-light);
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .header-button {
+            background-color: var(--primary-blue);
+            color: var(--text-color-light);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .header-button:hover {
+            background-color: #0066b1;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color-light);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('https://i.postimg.cc/prKqpSB3/inicio-jpg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            padding-top: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-text-color);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .hero-button {
+            background-color: var(--primary-blue);
+            color: var(--text-color-light);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .hero-button:hover {
+            background-color: #0066b1;
+            transform: translateY(-2px);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- SECCIÓN SOBRE NOSOTROS --- */
+        .about {
+            background-color: var(--main-bg-color);
+        }
+
+        .about h2,
+        .menu h2,
+        .reservas h2,
+        .contact h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-content p {
+            max-width: 800px;
+            text-align: center;
+            color: var(--secondary-text-color);
+        }
+
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            width: 100%;
+        }
+
+        /* Estilos de las imágenes en la galería */
+        .gallery-item-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cambiado para llenar el contenedor */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- SECCIÓN DEL MENÚ --- */
+        .menu {
+            background-color: var(--secondary-bg-color);
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-category-btn {
+            background-color: var(--main-bg-color);
+            color: var(--secondary-text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu-category-btn:hover,
+        .menu-category-btn.active {
+            background-color: var(--primary-blue);
+            color: var(--text-color-light);
+            border-color: var(--primary-blue);
+        }
+
+        .menu-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--main-bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Cambiado para llenar el contenedor */
+            cursor: pointer;
+        }
+        
+        .item-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .item-info p {
+            color: var(--secondary-text-color);
+            margin-bottom: 1rem;
+        }
+
+        .item-info .price {
+            font-weight: 700;
+            color: var(--text-color-light);
+            font-size: 1.25rem;
+        }
+
+        /* Estilos para el botón de Gemini */
+        .gemini-button {
+            background-color: var(--primary-blue);
+            color: var(--text-color-light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .gemini-button:hover {
+            background-color: #0066b1;
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos para la descripción generada */
+        .generated-description {
+            color: var(--text-color-light);
+            font-style: italic;
+            margin-top: 1rem;
+            border-left: 3px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--text-color-light);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- SECCIÓN DE RESERVAS Y CONTACTO --- */
+        .reservas,
+        .contact {
+            background-color: var(--main-bg-color);
+        }
+
+        .reservas .form-container,
+        .contact .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--secondary-bg-color);
+            color: var(--text-color-light);
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-container input:focus,
+        .form-container textarea:focus,
+        .form-container select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container .button {
+            background-color: var(--primary-blue);
+            color: var(--text-color-light);
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-container .button:hover {
+            background-color: #0066b1;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-text-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info .fas {
+            color: var(--primary-blue);
+            margin-right: 0.5rem;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            background-color: var(--secondary-bg-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: var(--text-color-light);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* --- BOTÓN DE WHATSAPP --- */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: scale(0);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .whatsapp-button.show {
+            transform: scale(1);
+        }
+
+        /* --- CUADRO DE MENSAJE PERSONALIZADO --- */
+        .message-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .message-box.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-content {
+            background-color: var(--main-bg-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .message-content p {
+            font-size: 1.2rem;
+        }
+
+        .message-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* --- MODAL PARA IMÁGENES --- */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .image-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .image-modal-close:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* --- ADAPTACIÓN A DISPOSITIVOS MÓVILES --- */
+        @media (max-width: 768px) {
+            header .header-button {
+                display: none;
+            }
+
+            header nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--main-bg-color);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in-out;
+            }
+
+            header nav.active {
+                transform: translateX(0);
+            }
+
+            header nav a {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item-container {
+                height: 300px;
+            }
+
+            .menu-item {
+                flex-direction: column;
+            }
+
+            .menu-item img {
+                height: 250px;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* Estilos de animación para secciones (opcional) */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <a href="#hero" class="logo-container">
+            <!-- Nuevo logo en formato de imagen -->
+            <img src="https://i.postimg.cc/tTBVDN47/estrellalogo.png" alt="Logo de Del Paladar a las Estrellas" class="logo">
+            <span class="logo-text">Del Paladar a las Estrellas</span>
+        </a>
+        <nav id="main-nav">
+            <a href="#hero">Inicio</a>
+            <a href="#about">Sobre Nosotros</a>
+            <a href="#menu">Menú</a>
+            <a href="#reservas">Reservas</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+        <button class="header-button">Reservar Ahora</button>
+        <div class="menu-toggle" id="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de inicio (Hero) con imagen de fondo -->
+        <section id="hero" class="hero">
+            <div class="hero-content container">
+                <h1 class="hero-title">Del Paladar a las Estrellas</h1>
+                <p class="hero-subtitle">Donde la cocina se encuentra con el cosmos</p>
+                <a href="#reservas" class="hero-button">¡Haz tu reserva!</a>
+            </div>
+        </section>
+
+        <!-- Sección "Sobre Nosotros" con galería de imágenes y la historia del restaurante -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Sobre Nosotros</h2>
+                <div class="about-content">
+                    <p>En "Del Paladar a las Estrellas", la idea de nuestro restaurante nació de un sueño: fusionar la pasión por la alta cocina con la inmensidad del universo. Fundado por un chef visionario que encontró inspiración en las constelaciones y las galaxias, cada plato es un reflejo de ese espíritu. Nuestra historia es un relato de dedicación a ingredientes frescos, técnicas innovadoras y, sobre todo, la creencia de que una comida puede ser una experiencia verdaderamente celestial. Te invitamos a ser parte de esta odisea gastronómica, donde cada bocado es un viaje y cada sabor una estrella.</p>
+                    <div class="about-gallery">
+                        <div class="gallery-item-container">
+                            <img src="https://i.postimg.cc/jjq9BRh2/chef-jpg.png" alt="Chef trabajando" class="gallery-item">
+                        </div>
+                        <div class="gallery-item-container">
+                            <img src="https://i.postimg.cc/nh40HNLm/ambiente-jpg.png" alt="Ambiente lujoso" class="gallery-item">
+                        </div>
+                        <div class="gallery-item-container">
+                            <img src="https://i.postimg.cc/TwLkX15d/ejemplo-jpg.png" alt="Plato de ejemplo" class="gallery-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección del Menú con imágenes para cada plato -->
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2>Nuestro Menú</h2>
+                <nav class="menu-categories">
+                    <button class="menu-category-btn active" data-category="entradas">Entradas</button>
+                    <button class="menu-category-btn" data-category="platos-principales">Platos Principales</button>
+                    <button class="menu-category-btn" data-category="postres">Postres</button>
+                    <button class="menu-category-btn" data-category="bebidas">Bebidas</button>
+                </nav>
+                <div class="menu-list" id="menu-list">
+                    <!-- Entradas -->
+                    <div class="menu-item" data-category="entradas" data-item-name="Tarta de Atún Estelar">
+                        <img src="https://i.postimg.cc/brS94BMs/atun-jpg.png" alt="Tarta de atún">
+                        <div class="item-info">
+                            <h3>Tarta de Atún Estelar</h3>
+                            <p>Tartar de atún fresco con aguacate y un toque de cítricos, servido sobre una base de crujiente pan de estrellas.</p>
+                            <span class="price">$18.50</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="entradas" data-item-name="Carpaccio de Pulpo de la Nebulosa">
+                        <img src="https://i.postimg.cc/vHL0ypTV/pulpo-jpg.png" alt="Carpaccio de pulpo">
+                        <div class="item-info">
+                            <h3>Carpaccio de Pulpo de la Nebulosa</h3>
+                            <p>Finas lonchas de pulpo fresco con aderezo de pimentón, aceite de oliva y un toque de sal marina.</p>
+                            <span class="price">$16.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <!-- Platos principales -->
+                    <div class="menu-item" data-category="platos-principales" data-item-name="Solomillo de Ternera con Salsa de Vino Tinto" style="display: none;">
+                        <img src="https://i.postimg.cc/5tG3pJ7Z/ternera-jpg.png" alt="Solomillo de Ternera">
+                        <div class="item-info">
+                            <h3>Solomillo de Ternera con Salsa de Vino Tinto</h3>
+                            <p>Tierno solomillo de ternera cocinado a la perfección, bañado en una rica salsa de vino tinto y acompañado de puré de patata trufado.</p>
+                            <span class="price">$35.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="platos-principales" data-item-name="Rodaballo al Horno con Patatas" style="display: none;">
+                        <img src="https://i.postimg.cc/0yVZMDp5/rodaballo-jpg.png" alt="Rodaballo">
+                        <div class="item-info">
+                            <h3>Rodaballo al Horno con Patatas</h3>
+                            <p>Rodaballo fresco al horno con patatas panaderas y un toque de ajo y perejil.</p>
+                            <span class="price">$38.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <!-- Postres -->
+                    <div class="menu-item" data-category="postres" data-item-name="Esfera de Chocolate del Eclipse Lunar" style="display: none;">
+                        <img src="https://i.postimg.cc/wv7rTFZd/cholotate-jpg.png" alt="Esfera de Chocolate">
+                        <div class="item-info">
+                            <h3>Esfera de Chocolate del Eclipse Lunar</h3>
+                            <p>Esfera de chocolate rellena de mousse de maracuyá y un toque de helado de vainilla.</p>
+                            <span class="price">$12.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="postres" data-item-name="Tiramisú de Constelaciones" style="display: none;">
+                        <img src="https://i.postimg.cc/fyQvnKhC/tiramisu-jpg.png" alt="Tiramisu">
+                        <div class="item-info">
+                            <h3>Tiramisú de Constelaciones</h3>
+                            <p>Clásico tiramisú con bizcochos empapados en café, crema de mascarpone y un toque de cacao en polvo.</p>
+                            <span class="price">$10.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <!-- Bebidas -->
+                    <div class="menu-item" data-category="bebidas" data-item-name="Vino de la Cosecha Estelar" style="display: none;">
+                        <img src="https://i.postimg.cc/kX9yTfsX/vino-jpg.png" alt="Vino">
+                        <div class="item-info">
+                            <h3>Vino de la Cosecha Estelar</h3>
+                            <p>Selección de vinos de la mejor cosecha para maridar tu plato.</p>
+                            <span class="price">$8.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="bebidas" data-item-name="Cóctel Galáctico" style="display: none;">
+                        <img src="https://i.postimg.cc/J4b2ns6t/coctel-jpg.png" alt="Coctel">
+                        <div class="item-info">
+                            <h3>Cóctel Galáctico</h3>
+                            <p>Cóctel especial de la casa con un toque de frutas exóticas.</p>
+                            <span class="price">$14.00</span>
+                            <button class="gemini-button">Descripción del plato ✨</button>
+                            <span class="loading-spinner"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Reservas -->
+        <section id="reservas" class="reservas">
+            <div class="container">
+                <h2>Reservas</h2>
+                <p>Haz tu reserva online para asegurar tu lugar en nuestro viaje gastronómico.</p>
+                <form class="form-container">
+                    <input type="text" placeholder="Nombre completo" required>
+                    <input type="email" placeholder="Correo electrónico" required>
+                    <input type="tel" placeholder="Teléfono" required>
+                    <input type="date" required>
+                    <input type="time" required>
+                    <select required>
+                        <option value="" disabled selected>Número de personas</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                        <option value="5+">5 o más</option>
+                    </select>
+                    <textarea placeholder="Comentarios o peticiones especiales"></textarea>
+                    <button type="submit" class="button">Reservar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contacto</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle de las Estrellas 123, Ciudad Cósmica</p>
+                    <p><i class="fas fa-phone-alt"></i> Teléfono: +123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@bocaalasestrellas.com</p>
+                </div>
+                <form class="form-container">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Correo electrónico" required>
+                    <textarea placeholder="Tu mensaje" required></textarea>
+                    <button type="submit" class="button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Del Paladar a las Estrellas. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/12393278031" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Cuadro de mensaje personalizado -->
+    <div id="message-box" class="message-box">
+        <div class="message-content">
+            <span class="message-close-btn">&times;</span>
+            <p id="message-text">Este es un mensaje de prueba.</p>
+        </div>
+    </div>
+    
+    <!-- Modal para mostrar las imágenes en pantalla completa -->
+    <div id="image-modal" class="image-modal">
+        <span id="image-modal-close" class="image-modal-close">&times;</span>
+        <img id="modal-image" src="" alt="Imagen en pantalla completa">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Referencias a elementos del DOM
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = document.querySelectorAll('#main-nav a');
+            const sections = document.querySelectorAll('section');
+            const menuItems = document.querySelectorAll('.menu-item');
+            const menuButtons = document.querySelectorAll('.menu-category-btn');
+            const whatsappButton = document.querySelector('.whatsapp-button');
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            const messageCloseBtn = document.querySelector('.message-close-btn');
+            const geminiButtons = document.querySelectorAll('.gemini-button');
+            const imageModal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            const imageModalClose = document.getElementById('image-modal-close');
+            const galleryImages = document.querySelectorAll('.about-gallery .gallery-item');
+            const menuImages = document.querySelectorAll('.menu-item img');
+
+            // Lógica para mostrar/ocultar el menú en dispositivos móviles
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+            // Ocultar el menú al hacer clic en un enlace de navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                });
+            });
+
+            // Animación de aparición de secciones al hacer scroll
+            const observerOptions = {
+                root: null, // El viewport es el elemento raíz
+                rootMargin: '0px',
+                threshold: 0.1 // Se activa cuando el 10% del elemento es visible
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                    } else {
+                        entry.target.classList.remove('section-visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.classList.add('section-hidden');
+                observer.observe(section);
+            });
+
+            // Lógica para filtrar elementos del menú por categoría
+            menuButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Eliminar la clase 'active' de todos los botones
+                    menuButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar la clase 'active' al botón clickeado
+                    button.classList.add('active');
+
+                    const category = button.dataset.category;
+                    menuItems.forEach(item => {
+                        // Mostrar los elementos de la categoría seleccionada
+                        if (item.dataset.category === category) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Mostrar el botón de WhatsApp al hacer scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    whatsappButton.classList.add('show');
+                } else {
+                    whatsappButton.classList.remove('show');
+                }
+            });
+
+            // Función para mostrar un mensaje personalizado en un cuadro de diálogo
+            function showMessage(text) {
+                messageText.textContent = text;
+                messageBox.classList.add('show');
+            }
+            // Ocultar el cuadro de mensaje al hacer clic en el botón de cerrar
+            messageCloseBtn.addEventListener('click', () => {
+                messageBox.classList.remove('show');
+            });
+            // Ocultar el cuadro de mensaje al hacer clic fuera de él
+            window.addEventListener('click', (event) => {
+                if (event.target === messageBox) {
+                    messageBox.classList.remove('show');
+                }
+            });
+
+            // Manejo del formulario de reservas
+            const reservaForm = document.querySelector('#reservas .form-container');
+            reservaForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Evita el envío por defecto del formulario
+                showMessage('¡Tu reserva ha sido enviada con éxito! Te contactaremos pronto para confirmarla.');
+                reservaForm.reset(); // Limpia el formulario
+            });
+
+            // Manejo del formulario de contacto
+            const contactForm = document.querySelector('#contact .form-container');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Evita el envío por defecto del formulario
+                showMessage('¡Tu mensaje ha sido enviado! Te responderemos en breve.');
+                contactForm.reset(); // Limpia el formulario
+            });
+            
+            // Lógica para abrir el modal de imágenes
+            function openImageModal(src) {
+                modalImage.src = src;
+                imageModal.classList.add('show');
+            }
+
+            // Lógica para cerrar el modal de imágenes
+            imageModalClose.addEventListener('click', () => {
+                imageModal.classList.remove('show');
+            });
+            
+            // Cierra el modal si se hace clic fuera de la imagen
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.classList.remove('show');
+                }
+            });
+
+            // Añadir event listeners a las imágenes de la galería
+            galleryImages.forEach(image => {
+                image.addEventListener('click', () => {
+                    openImageModal(image.src);
+                });
+            });
+
+            // Añadir event listeners a las imágenes del menú
+            menuImages.forEach(image => {
+                image.addEventListener('click', () => {
+                    openImageModal(image.src);
+                });
+            });
+
+            // Manejo de la función de generación de texto con Gemini
+            geminiButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const menuItem = button.closest('.menu-item');
+                    const itemName = menuItem.dataset.itemName;
+                    const itemInfo = menuItem.querySelector('.item-info');
+                    const loadingSpinner = menuItem.querySelector('.loading-spinner');
+                    const existingGeneratedDescription = itemInfo.querySelector('.generated-description');
+                    
+                    // Si ya existe una descripción generada, la eliminamos para generar una nueva
+                    if (existingGeneratedDescription) {
+                        existingGeneratedDescription.remove();
+                    }
+
+                    // Mostrar el spinner de carga y cambiar el texto del botón
+                    loadingSpinner.style.display = 'inline-block';
+                    button.disabled = true;
+                    button.textContent = 'Generando...';
+
+                    // Construir el prompt para la API de Gemini
+                    const prompt = `Genera una descripción poética y breve para el siguiente plato de un restaurante con temática cósmica: "${itemName}". No incluyas ninguna frase de introducción. Ve directamente al grano.`;
+
+                    const payload = {
+                        contents: [{
+                            parts: [{
+                                text: prompt
+                            }]
+                        }]
+                    };
+
+                    const apiKey = ""; // La clave de API se proporcionará automáticamente
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    let responseText = 'Lo siento, no se pudo generar una descripción en este momento. Inténtalo de nuevo más tarde.';
+                    let retries = 0;
+                    const maxRetries = 5;
+                    const initialDelay = 1000; // 1 second
+
+                    while (retries < maxRetries) {
+                        try {
+                            const response = await fetch(apiUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(payload)
+                            });
+
+                            if (!response.ok) {
+                                if (response.status === 429) {
+                                    // Handle rate limiting with exponential backoff
+                                    const delay = initialDelay * Math.pow(2, retries);
+                                    await new Promise(res => setTimeout(res, delay));
+                                    retries++;
+                                    continue; // Retry the request
+                                } else {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                            }
+
+                            const result = await response.json();
+                            if (result.candidates && result.candidates.length > 0 &&
+                                result.candidates[0].content && result.candidates[0].content.parts &&
+                                result.candidates[0].content.parts.length > 0) {
+                                responseText = result.candidates[0].content.parts[0].text;
+                            }
+                            break; // Exit the loop on success
+                        } catch (error) {
+                            console.error('Error al llamar a la API de Gemini:', error);
+                            // On error, the default responseText will be used.
+                            break; // Exit the loop on non-429 errors
+                        }
+                    }
+
+                    // Ocultar el spinner y restaurar el botón
+                    loadingSpinner.style.display = 'none';
+                    button.disabled = false;
+                    button.textContent = 'Descripción del plato ✨';
+
+                    // Crear y agregar la nueva descripción al DOM
+                    const newDescription = document.createElement('p');
+                    newDescription.className = 'generated-description';
+                    newDescription.textContent = responseText;
+                    itemInfo.appendChild(newDescription);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
